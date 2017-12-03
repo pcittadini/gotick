@@ -1,4 +1,4 @@
-package http
+package restclient
 
 import (
 	"bytes"
@@ -164,21 +164,3 @@ func httpClient(url string, jsonData []byte, httpMethod string, authToken string
 
 	return string(body), resp.StatusCode
 }
-
-func PushData(details string, where string) (res string, statuscode string, err error) {
-
-	r := new(Endpoint)
-	r.Host = "http://localhost:9200"
-	r.Path = where
-	r.Method = "POST"
-
-	r.Body = details
-
-	response, err := r.Do()
-	if err != nil {
-		return response.Result, response.StatusCode, err
-	}
-
-	return response.Result, response.StatusCode, nil
-}
-

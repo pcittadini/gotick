@@ -98,6 +98,7 @@ func (t *Task)Scheduler(){
 func updateOrCreateTask(t *Task)(err error){
 
 	var found bool
+	// TODO store in conf
 	connStr := "postgres://postgres:postgres@10.0.75.1:32768/gotick?sslmode=disable"
 	db, err := sql.Open("postgres", connStr)
 	if err != nil {

@@ -2,7 +2,6 @@ package clients
 
 import (
 	"fmt"
-	"strconv"
 	"gopkg.in/Shopify/sarama.v1"
 	"os"
 	"os/signal"
@@ -28,7 +27,7 @@ func TestConsumer(consumerId int) {
 		}
 	}()
 
-	topic := "gotick_tasks_" + strconv.Itoa(consumerId)
+	topic := "gotick_tasks"
 	// How to decide partition, is it fixed value...?
 	consumer, err := master.ConsumePartition(topic, 0, sarama.OffsetOldest)
 	if err != nil {
