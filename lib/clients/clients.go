@@ -7,7 +7,7 @@ import (
 	"os/signal"
 )
 
-func TestConsumer(consumerId int) {
+func TestConsumer(consumerId int, topic string) {
 	fmt.Printf("[consumer-%d] started", consumerId)
 	config := sarama.NewConfig()
 	config.Consumer.Return.Errors = true
@@ -27,7 +27,6 @@ func TestConsumer(consumerId int) {
 		}
 	}()
 
-	topic := "gotick_tasks"
 	// How to decide partition, is it fixed value...?
 	consumer, err := master.ConsumePartition(topic, 0, sarama.OffsetOldest)
 	if err != nil {
